@@ -2,7 +2,6 @@ package com.selenium.test;
 
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,25 +15,21 @@ public class TestOne {
 		ChromeOptions co=new ChromeOptions();
 		co.addArguments("--remote-allow-origins=*");
 		WebDriver driver=new ChromeDriver(co);
-		driver.get("https://demo.opencart.com/");
-		WebElement searchbar=driver.findElement(By.xpath("//*[@id=\"search\"]/input"));
-		searchbar.click();
-		WebElement btn=driver.findElement(By.xpath("//*[@id=\"search\"]/button/i"));
-		btn.click();
-		Thread.sleep(3000);
+		driver.get("https://demo.opencart.com/index.php?route=checkout/voucher&language=en-gb");
+		WebElement rname=driver.findElement(By.xpath("//*[@id=\"input-to-name\"]"));
+		rname.sendKeys("Akshaya");
+		WebElement remail=driver.findElement(By.xpath("//*[@id=\"input-to-email\"]"));
+		remail.sendKeys("akshaya@gmail.com");
+		WebElement name=driver.findElement(By.xpath("//*[@id=\"input-from-name\"]"));
+		name.sendKeys("achu");
+		WebElement mail=driver.findElement(By.xpath("//*[@id=\"input-from-email\"]"));
+		mail.sendKeys("achu@gmail.com");
+		WebElement message=driver.findElement(By.xpath("//*[@id=\"input-message\"]"));
+		message.sendKeys("Display");
+		WebElement amount=driver.findElement(By.xpath("//*[@id=\"input-amount\"]"));
+		amount.sendKeys("0000");
 		driver.navigate().back();
-		JavascriptExecutor js=(JavascriptExecutor)driver;
-		js.executeScript("window.scrollBy(0,1300)","");
-		Thread.sleep(5000);
-		WebElement returns=driver.findElement(By.xpath("/html/body/footer/div/div/div[2]/ul/li[2]/a"));
-		returns.click();
-		driver.navigate().back();
-		WebElement gf=driver.findElement(By.xpath("/html/body/footer/div/div/div[3]/ul/li[2]/a"));
-		gf.click();
-		Thread.sleep(3000);
 		driver.close();
-		
-		
 		
         
 	}
